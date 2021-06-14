@@ -8,7 +8,7 @@ before_install:
   - docker build -t mohexc/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true monhexc/react-test npm test
+  - docker run -e CI=true mohexc/react-test npm test
 
 after_success:
   - docker build -t mohexc/multi-client ./client
