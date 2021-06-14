@@ -5,18 +5,18 @@ service:
   - docker
 
 before_install:
-  - docker build -t mohexc/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t nutcorp/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true mohexc/react-test npm test
+  - docker run -e CI=true nutcorp/react-test npm test
 
 after_success:
-  - docker build -t mohexc/multi-client ./client
-  - docker build -t mohexc/multi-nginx ./nginx
-  - docker build -t mohexc/multi-server ./server
-  - docker build -t mohexc/multi-worker ./worker
+  - docker build -t nutcorp/multi-client ./client
+  - docker build -t nutcorp/multi-nginx ./nginx
+  - docker build -t nutcorp/multi-server ./server
+  - docker build -t nutcorp/multi-worker ./worker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push mohexc/multi-client
-  - docker push mohexc/multi-nginx
-  - docker push mohexc/multi-server
-  - docker push mohexc/multi-worker
+  - docker push nutcorp/multi-client
+  - docker push nutcorp/multi-nginx
+  - docker push nutcorp/multi-server
+  - docker push nutcorp/multi-worker
