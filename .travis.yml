@@ -15,7 +15,7 @@ after_success:
   - docker build -t nutcorp/multi-nginx ./nginx
   - docker build -t nutcorp/multi-server ./server
   - docker build -t nutcorp/multi-worker ./worker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD" docker.io
   - docker push nutcorp/multi-client
   - docker push nutcorp/multi-nginx
   - docker push nutcorp/multi-server
